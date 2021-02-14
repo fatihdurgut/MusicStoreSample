@@ -24,11 +24,11 @@ Install-WindowsFeature web-server -IncludeManagementTools
 # install dot.net core sdk
 Invoke-WebRequest https://go.microsoft.com/fwlink/?linkid=848827 -outfile c:\temp\dotnet-dev-win-x64.1.0.4.exe
 Start-Process c:\temp\dotnet-dev-win-x64.1.0.4.exe -ArgumentList '/quiet' -Wait
-Invoke-WebRequest https://go.microsoft.com/fwlink/?LinkId=817246 -outfile c:\temp\DotNetCore.WindowsHosting.exe
+Invoke-WebRequest https://download.microsoft.com/download/E/F/7/EF7302FE-4F84-4529-9E3A-893450F76501/DotNetCore.2.0.8-WindowsHosting.exe -outfile c:\temp\DotNetCore.WindowsHosting.exe
 Start-Process c:\temp\DotNetCore.WindowsHosting.exe -ArgumentList '/quiet' -Wait
 
 # download / config music app
-Invoke-WebRequest  https://github.com/neilpeterson/nepeters-azure-templates/raw/master/dotnet-core-music-vm-sql-db/music-app/music-store-azure-demo-pub.zip -OutFile c:\temp\musicstore.zip
+Invoke-WebRequest  https://raw.githubusercontent.com/fatihdurgut/MusicStoreSample/master/music-app/music-store-azure-demo-pub.zip -OutFile c:\temp\musicstore.zip
 Expand-Archive C:\temp\musicstore.zip c:\music
 (Get-Content C:\music\config.json) | ForEach-Object { $_ -replace "<replaceserver>", $sqlserver } | Set-Content C:\music\config.json
 (Get-Content C:\music\config.json) | ForEach-Object { $_ -replace "<replaceuser>", $user } | Set-Content C:\music\config.json

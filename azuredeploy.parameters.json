@@ -9,10 +9,10 @@
             "value": "adminuser"
         },
         "publicipaddressDnsName": {
-            "value": "dnsname"
+            "value": "musicapp-fatihd"
         },
         "adminPassword": {
-            "value": "password"
+            "value": "Pass"
         }
     }
 }
