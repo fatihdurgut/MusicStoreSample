@@ -28,6 +28,7 @@ Invoke-WebRequest https://download.microsoft.com/download/E/F/7/EF7302FE-4F84-45
 Start-Process c:\temp\DotNetCore.WindowsHosting.exe -ArgumentList '/quiet' -Wait
 
 # download / config music app
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-WebRequest  https://raw.githubusercontent.com/fatihdurgut/MusicStoreSample/master/music-app/music-store-azure-demo-pub.zip -OutFile c:\temp\musicstore.zip
 Expand-Archive C:\temp\musicstore.zip c:\music
 (Get-Content C:\music\config.json) | ForEach-Object { $_ -replace "<replaceserver>", $sqlserver } | Set-Content C:\music\config.json
